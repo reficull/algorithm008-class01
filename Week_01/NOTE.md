@@ -260,3 +260,24 @@ func reverse(head *ListNode) *ListNode {
 }
 
 ```
+
+[面试 题50](https://leetcode-cn.com/problems/di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu-lcof/)
+
+在字符串 s 中找出第一个只出现一次的字符。如果没有，返回一个单空格。
+思路: 使用一个int数组来记录, 将每个字符出现次数记在这个数组中
+最后遍历字符串, 查找数组中记录的字符,返回第一个值 为1的字符
+
+```
+func firstUniqChar(s string) byte {
+  m := [256]int{}
+    for _, r := range s {
+        m[int(r)]++
+    }
+    for i, r := range s {
+        if m[int(r)] == 1 {
+            return s[i]
+        }
+    }
+    return ' '
+}
+```
