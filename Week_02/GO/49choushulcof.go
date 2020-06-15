@@ -42,3 +42,10 @@ func nthUglyNumber(n int) int {
     return result[len(result)-1]
 
 }
+
+func min(a int,b int) int{
+    if  a < b{
+        return a
+    }
+    return b
+}

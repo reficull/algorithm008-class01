@@ -29,12 +29,16 @@ func main(){
     var root = &TreeNode{}
     
     root = array2btree(ary,root,0,7)
+    fmt.Println("print tree:")
+    inOrder(root)
+    invertTree(root)
+    fmt.Println("print tree after invert:")
     inOrder(root)
 }
 func inOrder(node *TreeNode){
     if node != nil{
         fmt.Printf(" %v",node.Val)
-        fmt.Println("/ \")
+        fmt.Println("/ \\")
         inOrder(node.Left)
         inOrder(node.Right )
     }else{
