@@ -1,12 +1,19 @@
 #include <iostream>
 #include <string.h>
+using namespace std;
+
+const size_t N = 10;
 
 class Solution {
-    int hash[10][10];
+    
+    
+    int hash[N][N];
     int cnt;
     void doAdd(int r,int c, int n, int val){
         if(r<0 || r>=n) return;
         if(c<0 || c>=n) return;
+        
+        //if(hash[r][c]<1)
         hash[r][c]+=val;
     }
     void add(int r,int c,int n,int val){
@@ -33,9 +40,21 @@ class Solution {
             if(hash[depth][i] == 0){
                 add(depth,i,maxDepth,1);
                 dfs(depth + 1,maxDepth);
+                printHash();
                 add(depth,i,maxDepth,-1);
             }
         }
+        
+    }
+    void printHash(){
+        for(int c=0;c<N;++c){
+            for(int r=0;r<N;++r){
+                cout << hash[r][c] ;
+            }
+            cout << endl;
+        }
+        cout << "================" << endl;
+        cout << endl;
     }
 public:
     int totalNQueens(int n) {
@@ -48,6 +67,6 @@ public:
 
 int main(){
 	Solution *s = new Solution();
-    int cnt = s->totalNQueens(4);
-    std::cout << "4:" << cnt << std::endl;
+    int cnt = s->totalNQueens(8);
+    cout << "8:" << cnt << endl;
 }
