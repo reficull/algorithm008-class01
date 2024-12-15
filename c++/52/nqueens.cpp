@@ -23,15 +23,16 @@ class Solution {
             doAdd(i,c,n,val);// 列增加标签
         }
         for(i=0;i<n;++i){
-            doAdd(r+i,c+i,n,val);
-            doAdd(r+i,c-i,n,val);
-            doAdd(r-i,c+i,n,val);
-            doAdd(r-i,c-i,n,val);
+            doAdd(r+i,c+i,n,val); // diaganal "\"
+            doAdd(r+i,c-i,n,val); // diaganal "/"
+            doAdd(r-i,c+i,n,val); // diaganal "/"
+            doAdd(r-i,c-i,n,val); // diaganal "\"
             
         }
     }
     void dfs(int depth,int maxDepth){
         if(depth == maxDepth){
+            printHash();
             cnt++;
             return;
         }
@@ -40,7 +41,7 @@ class Solution {
             if(hash[depth][i] == 0){
                 add(depth,i,maxDepth,1);
                 dfs(depth + 1,maxDepth);
-                printHash();
+                
                 add(depth,i,maxDepth,-1);
             }
         }
@@ -49,7 +50,11 @@ class Solution {
     void printHash(){
         for(int c=0;c<N;++c){
             for(int r=0;r<N;++r){
-                cout << hash[r][c] ;
+                if(hash[r][c]>=6)
+                    cout << "Q";
+                else
+                    cout << ".";
+                //cout << hash[r][c] ;
             }
             cout << endl;
         }
@@ -67,6 +72,8 @@ public:
 
 int main(){
 	Solution *s = new Solution();
-    int cnt = s->totalNQueens(8);
-    cout << "8:" << cnt << endl;
+    int n = 1;
+    cin >> n;
+    int cnt = s->totalNQueens(n);
+    cout << "N:" << n << ", count:" << cnt << endl;
 }
