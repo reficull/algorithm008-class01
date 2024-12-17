@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include <string.h>
 using namespace std;
 
@@ -6,7 +7,7 @@ const size_t N = 10;
 
 class Solution {
     
-    
+    vector<vector<string>> matrix;
     int hash[N][N];
     int cnt;
     void doAdd(int r,int c, int n, int val){
@@ -32,7 +33,8 @@ class Solution {
     }
     void dfs(int depth,int maxDepth){
         if(depth == maxDepth){
-            printHash();
+            printHash(maxDepth);
+            //makeRet(maxDepth);
             cnt++;
             return;
         }
@@ -47,9 +49,27 @@ class Solution {
         }
         
     }
-    void printHash(){
-        for(int c=0;c<N;++c){
-            for(int r=0;r<N;++r){
+/*
+    void makeRet(int n){
+        if(matrix.size() == 0)
+            matrix = new vector<vector<string>>();
+        string s = new String();
+        vector<string> board = new vector<string>();
+        for(int c=0;c<n;++c){
+            for(int r=0;r<n;++r){
+                if(hash[r][c]>=6)
+                    s.append("Q");
+                else
+                    s.append(".");
+            }
+            board.append(s);
+        }
+        matrix.append(board);
+    }
+*/
+    void printHash(int n){
+        for(int c=0;c<n;++c){
+            for(int r=0;r<n;++r){
                 if(hash[r][c]>=6)
                     cout << "Q";
                 else
